@@ -163,14 +163,14 @@ extension DataList: Sequence where T: Any {
 public struct ObjectListIterator<T>: IteratorProtocol {
     private var index = 0
     private var collection: DataList<T>
+    private var objects: [T]
     
     init(collection: DataList<T>) {
         self.collection = collection
+        self.objects = collection.objects()
     }
     
     public mutating func next() -> T? {
-        let objects = collection.objects()
-        
         guard index < objects.count else {
             return nil
         }
