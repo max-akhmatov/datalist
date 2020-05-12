@@ -101,7 +101,7 @@ open class DataList<T> {
     
     /// Removes the previously added filter from this object list
     public func removeFilter(_ filter: DataListFilter<T>) throws {
-        guard let filterIndex = filters.index(where: {$0 === filter}) else {
+        guard let filterIndex = filters.firstIndex(where: {$0 === filter}) else {
             // fallback in case the provided filter not in the list
             throw DataListError.filterDoesNotPresentInTheList
         }
@@ -130,7 +130,7 @@ open class DataList<T> {
     }
     
     public func removeSortDescriptor(_ descriptor: DataListSortDescriptor<T>) throws {
-        guard let index = sortDescriptors.index(where: {$0 === descriptor})else {
+        guard let index = sortDescriptors.firstIndex(where: {$0 === descriptor})else {
             // fallback in case the provided descriptor not in the list
             throw DataListError.sortDescriptoDoesNotPresentInTheList
         }
